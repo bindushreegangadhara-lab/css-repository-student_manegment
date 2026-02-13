@@ -1,0 +1,35 @@
+{% extends 'expenses/base.html' %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>All Expenses</h2>
+<p><strong>Daily Total:</strong> ${{ daily_total }}</p>
+<p><strong>Monthly Total:</strong> ${{ monthly_total }}</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.title }}</td>
+            <td>${{ expense.amount }}</td>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No expenses added yet.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
